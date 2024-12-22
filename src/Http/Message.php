@@ -9,10 +9,8 @@ namespace WebSocket\Http;
 
 use BadMethodCallException;
 use InvalidArgumentException;
-use Psr\Http\Message\{
-    MessageInterface,
-    StreamInterface
-};
+use Psr\Http\Message\MessageInterface;
+use Psr\Http\Message\StreamInterface;
 use WebSocket\TraitNs\StringableTrait;
 
 /**

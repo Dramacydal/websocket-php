@@ -8,10 +8,8 @@
 namespace WebSocket\Middleware;
 
 use WebSocket\Connection;
-use WebSocket\Http\{
-    HttpHandler,
-    Message
-};
+use WebSocket\Http\HttpHandler;
+use WebSocket\Http\Message;
 use WebSocket\TraitNs\StringableTrait;
 
 /**

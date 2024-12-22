@@ -9,18 +9,14 @@
 
 namespace WebSocket\Middleware;
 
-use Psr\Log\{
-    LoggerAwareInterface,
-    LoggerAwareTrait
-};
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
 use WebSocket\Connection;
 use WebSocket\Exception\HandshakeException;
-use WebSocket\Http\{
-    Message,
-    Request,
-    Response,
-    ServerRequest,
-};
+use WebSocket\Http\Message;
+use WebSocket\Http\Request;
+use WebSocket\Http\Response;
+use WebSocket\Http\ServerRequest;
 use WebSocket\TraitNs\StringableTrait;
 
 /**

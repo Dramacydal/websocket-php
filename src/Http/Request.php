@@ -8,10 +8,8 @@
 namespace WebSocket\Http;
 
 use Phrity\Net\Uri;
-use Psr\Http\Message\{
-    RequestInterface,
-    UriInterface
-};
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\UriInterface;
 use RuntimeException;
 
 /**

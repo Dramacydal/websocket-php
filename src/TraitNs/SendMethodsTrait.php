@@ -7,13 +7,11 @@
 
 namespace WebSocket\TraitNs;
 
-use WebSocket\Message\{
-    Binary,
-    Close,
-    Ping,
-    Pong,
-    Text
-};
+use WebSocket\Message\Binary;
+use WebSocket\Message\Close;
+use WebSocket\Message\Ping;
+use WebSocket\Message\Pong;
+use WebSocket\Message\Text;
 
 /**
  * WebSocket\Trait\SendMethodsTrait trait.

@@ -8,17 +8,13 @@
 namespace WebSocket\Frame;
 
 use Phrity\Net\SocketStream;
-use Psr\Log\{
-    LoggerInterface,
-    LoggerAwareInterface,
-    NullLogger
-};
+use Psr\Log\LoggerInterface;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\NullLogger;
 use RuntimeException;
 use WebSocket\Exception\CloseException;
-use WebSocket\TraitNs\{
-    OpcodeTrait,
-    StringableTrait
-};
+use WebSocket\TraitNs\OpcodeTrait;
+use WebSocket\TraitNs\StringableTrait;
 
 /**
  * WebSocket\Frame\FrameHandler class.

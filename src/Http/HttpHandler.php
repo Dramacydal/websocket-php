@@ -7,15 +7,11 @@
 
 namespace WebSocket\Http;
 
-use Phrity\Net\{
-    SocketStream,
-    Uri
-};
+use Phrity\Net\SocketStream;
+use Phrity\Net\Uri;
 use Psr\Http\Message\MessageInterface;
-use Psr\Log\{
-    LoggerInterface,
-    LoggerAwareInterface,
-};
+use Psr\Log\LoggerInterface;
+use Psr\Log\LoggerAwareInterface;
 use RuntimeException;
 use WebSocket\TraitNs\StringableTrait;
 

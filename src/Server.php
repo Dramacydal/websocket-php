@@ -12,31 +12,23 @@ use Phrity\Net\SocketServer;
 use Phrity\Net\StreamCollection;
 use Phrity\Net\StreamFactory;
 use Phrity\Net\Uri;
-use Psr\Log\{
-    LoggerAwareInterface,
-    LoggerInterface,
-    NullLogger
-};
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 use Throwable;
-use WebSocket\Exception\{
-    CloseException,
-    ConnectionLevelInterface,
-    Exception,
-    HandshakeException,
-    MessageLevelInterface,
-    ServerException
-};
-use WebSocket\Http\{
-    Response,
-    ServerRequest
-};
+use WebSocket\Exception\CloseException;
+use WebSocket\Exception\ConnectionLevelInterface;
+use WebSocket\Exception\Exception;
+use WebSocket\Exception\HandshakeException;
+use WebSocket\Exception\MessageLevelInterface;
+use WebSocket\Exception\ServerException;
+use WebSocket\Http\Response;
+use WebSocket\Http\ServerRequest;
 use WebSocket\Message\Message;
 use WebSocket\Middleware\MiddlewareInterface;
-use WebSocket\TraitNs\{
-    ListenerTrait,
-    SendMethodsTrait,
-    StringableTrait
-};
+use WebSocket\TraitNs\ListenerTrait;
+use WebSocket\TraitNs\SendMethodsTrait;
+use WebSocket\TraitNs\StringableTrait;
 
 /**
  * WebSocket\Server class.

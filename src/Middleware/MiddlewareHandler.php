@@ -8,20 +8,14 @@
 namespace WebSocket\Middleware;
 
 use Closure;
-use Psr\Log\{
-    LoggerInterface,
-    LoggerAwareInterface,
-    NullLogger
-};
+use Psr\Log\LoggerInterface;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\NullLogger;
 use WebSocket\Connection;
-use WebSocket\Http\{
-    HttpHandler,
-    Message as HttpMessage
-};
-use WebSocket\Message\{
-    Message,
-    MessageHandler
-};
+use WebSocket\Http\HttpHandler;
+use WebSocket\Http\Message as HttpMessage;
+use WebSocket\Message\Message;
+use WebSocket\Message\MessageHandler;
 use WebSocket\TraitNs\StringableTrait;
 
 /**

@@ -10,19 +10,13 @@
 namespace WebSocket\Middleware;
 
 use Phrity\Net\Uri;
-use Psr\Log\{
-    LoggerAwareInterface,
-    LoggerAwareTrait
-};
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
 use WebSocket\Connection;
-use WebSocket\Exception\{
-    HandshakeException,
-    ReconnectException
-};
-use WebSocket\Http\{
-    Message,
-    Response
-};
+use WebSocket\Exception\HandshakeException;
+use WebSocket\Exception\ReconnectException;
+use WebSocket\Http\Message;
+use WebSocket\Http\Response;
 use WebSocket\TraitNs\StringableTrait;
 
 /**

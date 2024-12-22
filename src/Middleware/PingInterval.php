@@ -7,15 +7,11 @@
 
 namespace WebSocket\Middleware;
 
-use Psr\Log\{
-    LoggerAwareInterface,
-    LoggerAwareTrait
-};
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
 use WebSocket\Connection;
-use WebSocket\Message\{
-    Ping,
-    Message
-};
+use WebSocket\Message\Ping;
+use WebSocket\Message\Message;
 use WebSocket\TraitNs\StringableTrait;
 
 /**

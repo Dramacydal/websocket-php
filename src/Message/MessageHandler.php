@@ -7,11 +7,9 @@
 
 namespace WebSocket\Message;
 
-use Psr\Log\{
-    LoggerAwareInterface,
-    LoggerInterface,
-    NullLogger
-};
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 use WebSocket\Exception\BadOpcodeException;
 use WebSocket\Frame\FrameHandler;
 use WebSocket\TraitNs\StringableTrait;

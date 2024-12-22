@@ -8,10 +8,8 @@
 namespace WebSocket\Http;
 
 use BadMethodCallException;
-use Psr\Http\Message\{
-    ServerRequestInterface,
-    UriInterface
-};
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\UriInterface;
 
 /**
  * WebSocket\Http\ServerRequest class.
