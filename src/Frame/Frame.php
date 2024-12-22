@@ -7,14 +7,13 @@
 
 namespace WebSocket\Frame;
 
-use Stringable;
-use WebSocket\Trait\StringableTrait;
+use WebSocket\TraitNs\StringableTrait;
 
 /**
  * WebSocket\Frame\Frame class.
  * Represent a single frame sent or received as part of websocket message.
  */
-class Frame implements Stringable
+class Frame
 {
     use StringableTrait;
 

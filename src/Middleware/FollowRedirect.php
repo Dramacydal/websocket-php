@@ -14,7 +14,6 @@ use Psr\Log\{
     LoggerAwareInterface,
     LoggerAwareTrait
 };
-use Stringable;
 use WebSocket\Connection;
 use WebSocket\Exception\{
     HandshakeException,
@@ -24,13 +23,13 @@ use WebSocket\Http\{
     Message,
     Response
 };
-use WebSocket\Trait\StringableTrait;
+use WebSocket\TraitNs\StringableTrait;
 
 /**
  * WebSocket\Middleware\CloseHandler class.
  * Handles close procedure.
  */
-class FollowRedirect implements LoggerAwareInterface, ProcessHttpIncomingInterface, Stringable
+class FollowRedirect implements LoggerAwareInterface, ProcessHttpIncomingInterface
 {
     use LoggerAwareTrait;
     use StringableTrait;

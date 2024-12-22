@@ -15,15 +15,15 @@ use Phrity\Net\Uri;
  */
 class ReconnectException extends Exception implements ConnectionLevelInterface
 {
-    private Uri|null $uri;
+    private ?Uri $uri;
 
-    public function __construct(Uri|null $uri = null)
+    public function __construct(?Uri $uri = null)
     {
         $this->uri = $uri;
         parent::__construct("Reconnect requested" . ($uri ? ": {$uri}" : ''));
     }
 
-    public function getUri(): Uri|null
+    public function getUri(): ?Uri
     {
         return $this->uri;
     }

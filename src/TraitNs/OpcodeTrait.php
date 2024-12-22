@@ -5,7 +5,7 @@
  * This file is part of Websocket PHP and is free software under the ISC License.
  */
 
-namespace WebSocket\Trait;
+namespace WebSocket\TraitNs;
 
 /**
  * WebSocket\Trait\OpcodeTrait trait.

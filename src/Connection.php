@@ -8,45 +8,32 @@
 namespace WebSocket;
 
 use Phrity\Net\SocketStream;
-use Psr\Log\{
-    LoggerAwareInterface,
-    LoggerInterface,
-    NullLogger
-};
-use Stringable;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 use Throwable;
 use WebSocket\Frame\FrameHandler;
-use WebSocket\Http\{
-    HttpHandler,
-    Message as HttpMessage,
-    Request,
-    Response
-};
-use WebSocket\Exception\{
-    ConnectionClosedException,
-    ConnectionFailureException,
-    ConnectionTimeoutException,
-    Exception,
-    ReconnectException,
-};
-use WebSocket\Message\{
-    Message,
-    MessageHandler
-};
-use WebSocket\Middleware\{
-    MiddlewareHandler,
-    MiddlewareInterface
-};
-use WebSocket\Trait\{
-    SendMethodsTrait,
-    StringableTrait
-};
+use WebSocket\Http\HttpHandler;
+use WebSocket\Http\Message as HttpMessage;
+use WebSocket\Http\Request;
+use WebSocket\Http\Response;
+use WebSocket\Exception\ConnectionClosedException;
+use WebSocket\Exception\ConnectionFailureException;
+use WebSocket\Exception\ConnectionTimeoutException;
+use WebSocket\Exception\Exception;
+use WebSocket\Exception\ReconnectException;
+use WebSocket\Message\Message;
+use WebSocket\Message\MessageHandler;
+use WebSocket\Middleware\MiddlewareHandler;
+use WebSocket\Middleware\MiddlewareInterface;
+use WebSocket\TraitNs\SendMethodsTrait;
+use WebSocket\TraitNs\StringableTrait;
 
 /**
  * WebSocket\Connection class.
  * A client/server connection, wrapping socket stream.
  */
-class Connection implements LoggerAwareInterface, Stringable
+class Connection implements LoggerAwareInterface
 {
     use SendMethodsTrait;
     use StringableTrait;
@@ -60,8 +47,8 @@ class Connection implements LoggerAwareInterface, Stringable
     private int $timeout = 60;
     private string $localName;
     private string $remoteName;
-    private Request|null $handshakeRequest = null;
-    private Response|null $handshakeResponse = null;
+    private ?Request $handshakeRequest = null;
+    private ?Response $handshakeResponse = null;
     private array $meta = [];
     private bool $closed = false;
 
@@ -232,7 +219,7 @@ class Connection implements LoggerAwareInterface, Stringable
      * Get name of local socket, or null if not connected.
      * @return string|null
      */
-    public function getName(): string|null
+    public function getName(): ?string
     {
         return $this->localName;
     }
@@ -241,7 +228,7 @@ class Connection implements LoggerAwareInterface, Stringable
      * Get name of remote socket, or null if not connected.
      * @return string|null
      */
-    public function getRemoteName(): string|null
+    public function getRemoteName(): ?string
     {
         return $this->remoteName;
     }
@@ -329,7 +316,7 @@ class Connection implements LoggerAwareInterface, Stringable
         return $this;
     }
 
-    public function getHandshakeRequest(): Request|null
+    public function getHandshakeRequest(): ?Request
     {
         return $this->handshakeRequest;
     }
@@ -340,7 +327,7 @@ class Connection implements LoggerAwareInterface, Stringable
         return $this;
     }
 
-    public function getHandshakeResponse(): Response|null
+    public function getHandshakeResponse(): ?Response
     {
         return $this->handshakeResponse;
     }

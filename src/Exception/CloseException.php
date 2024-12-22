@@ -13,16 +13,16 @@ namespace WebSocket\Exception;
  */
 class CloseException extends Exception
 {
-    protected int|null $status;
+    protected ?int $status;
     protected string $content;
 
-    public function __construct(int|null $status = null, string $content = '')
+    public function __construct(?int $status = null, string $content = '')
     {
         $this->status = $status;
         parent::__construct($content);
     }
 
-    public function getCloseStatus(): int|null
+    public function getCloseStatus(): ?int
     {
         return $this->status;
     }

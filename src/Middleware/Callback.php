@@ -12,11 +12,10 @@ use Psr\Log\{
     LoggerAwareInterface,
     LoggerAwareTrait
 };
-use Stringable;
 use WebSocket\Connection;
 use WebSocket\Http\Message as HttpMessage;
 use WebSocket\Message\Message;
-use WebSocket\Trait\StringableTrait;
+use WebSocket\TraitNs\StringableTrait;
 
 /**
  * WebSocket\Middleware\Callback class.
@@ -28,24 +27,23 @@ class Callback implements
     ProcessHttpOutgoingInterface,
     ProcessIncomingInterface,
     ProcessOutgoingInterface,
-    ProcessTickInterface,
-    Stringable
+    ProcessTickInterface
 {
     use LoggerAwareTrait;
     use StringableTrait;
 
-    private Closure|null $incoming;
-    private Closure|null $outgoing;
-    private Closure|null $httpIncoming;
-    private Closure|null $httpOutgoing;
-    private Closure|null $tick;
+    private ?Closure $incoming;
+    private ?Closure $outgoing;
+    private ?Closure $httpIncoming;
+    private ?Closure $httpOutgoing;
+    private ?Closure $tick;
 
     public function __construct(
-        Closure|null $incoming = null,
-        Closure|null $outgoing = null,
-        Closure|null $httpIncoming = null,
-        Closure|null $httpOutgoing = null,
-        Closure|null $tick = null,
+        ?Closure $incoming = null,
+        ?Closure $outgoing = null,
+        ?Closure $httpIncoming = null,
+        ?Closure $httpOutgoing = null,
+        ?Closure $tick = null,
     ) {
         $this->incoming = $incoming;
         $this->outgoing = $outgoing;

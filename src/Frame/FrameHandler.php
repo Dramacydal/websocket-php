@@ -14,9 +14,8 @@ use Psr\Log\{
     NullLogger
 };
 use RuntimeException;
-use Stringable;
 use WebSocket\Exception\CloseException;
-use WebSocket\Trait\{
+use WebSocket\TraitNs\{
     OpcodeTrait,
     StringableTrait
 };
@@ -25,7 +24,7 @@ use WebSocket\Trait\{
  * WebSocket\Frame\FrameHandler class.
  * Reads and writes Frames on stream.
  */
-class FrameHandler implements LoggerAwareInterface, Stringable
+class FrameHandler implements LoggerAwareInterface
 {
     use OpcodeTrait;
     use StringableTrait;

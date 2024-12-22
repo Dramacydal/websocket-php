@@ -17,15 +17,14 @@ use Psr\Log\{
     LoggerAwareInterface,
 };
 use RuntimeException;
-use Stringable;
-use WebSocket\Trait\StringableTrait;
+use WebSocket\TraitNs\StringableTrait;
 
 /**
  * WebSocket\Http\HttpHandler class.
  * Reads and writes HTTP message to/from stream.
  * @deprecated Remove LoggerAwareInterface in v4
  */
-class HttpHandler implements LoggerAwareInterface, Stringable
+class HttpHandler implements LoggerAwareInterface
 {
     use StringableTrait;
 

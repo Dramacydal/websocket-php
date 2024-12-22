@@ -11,26 +11,25 @@ use Psr\Log\{
     LoggerAwareInterface,
     LoggerAwareTrait
 };
-use Stringable;
 use WebSocket\Connection;
 use WebSocket\Message\{
     Ping,
     Message
 };
-use WebSocket\Trait\StringableTrait;
+use WebSocket\TraitNs\StringableTrait;
 
 /**
  * WebSocket\Middleware\PingInterval class.
  * Handles close procedure.
  */
-class PingInterval implements LoggerAwareInterface, ProcessOutgoingInterface, ProcessTickInterface, Stringable
+class PingInterval implements LoggerAwareInterface, ProcessOutgoingInterface, ProcessTickInterface
 {
     use LoggerAwareTrait;
     use StringableTrait;
 
-    private int|null $interval;
+    private ?int $interval;
 
-    public function __construct(int|null $interval = null)
+    public function __construct(?int $interval = null)
     {
         $this->interval = $interval;
     }

@@ -8,45 +8,35 @@
 namespace WebSocket;
 
 use InvalidArgumentException;
-use Phrity\Net\{
-    StreamCollection,
-    StreamFactory,
-    Uri
-};
+use Phrity\Net\StreamCollection;
+use Phrity\Net\StreamFactory;
+use Phrity\Net\Uri;
 use Psr\Http\Message\UriInterface;
-use Psr\Log\{
-    LoggerAwareInterface,
-    LoggerInterface,
-    NullLogger
-};
-use Stringable;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 use Throwable;
-use WebSocket\Exception\{
-    BadUriException,
-    ClientException,
-    ConnectionLevelInterface,
-    Exception,
-    HandshakeException,
-    MessageLevelInterface,
-    ReconnectException
-};
-use WebSocket\Http\{
-    Request,
-    Response
-};
+use WebSocket\Exception\BadUriException;
+use WebSocket\Exception\ClientException;
+use WebSocket\Exception\ConnectionLevelInterface;
+use WebSocket\Exception\Exception;
+use WebSocket\Exception\HandshakeException;
+use WebSocket\Exception\MessageLevelInterface;
+use WebSocket\Exception\ReconnectException;
+
+use WebSocket\Http\Request;
+use WebSocket\Http\Response;
 use WebSocket\Message\Message;
 use WebSocket\Middleware\MiddlewareInterface;
-use WebSocket\Trait\{
-    ListenerTrait,
-    SendMethodsTrait,
-    StringableTrait
-};
+use WebSocket\TraitNs\ListenerTrait;
+use WebSocket\TraitNs\SendMethodsTrait;
+use WebSocket\TraitNs\StringableTrait;
 
 /**
  * WebSocket\Client class.
  * Entry class for WebSocket client.
  */
-class Client implements LoggerAwareInterface, Stringable
+class Client implements LoggerAwareInterface
 {
     use ListenerTrait;
     use SendMethodsTrait;
@@ -63,9 +53,9 @@ class Client implements LoggerAwareInterface, Stringable
     // Internal resources
     private StreamFactory $streamFactory;
     private Uri $socketUri;
-    private Connection|null $connection = null;
+    private ?Connection $connection = null;
     private array $middlewares = [];
-    private StreamCollection|null $streams = null;
+    private ?StreamCollection $streams = null;
     private bool $running = false;
 
 
@@ -74,7 +64,7 @@ class Client implements LoggerAwareInterface, Stringable
     /**
      * @param Psr\Http\Message\UriInterface|string $uri A ws/wss-URI
      */
-    public function __construct(UriInterface|string $uri)
+    public function __construct(?UriInterface $uri)
     {
         $this->socketUri = $this->parseUri($uri);
         $this->logger = new NullLogger();
@@ -451,7 +441,7 @@ class Client implements LoggerAwareInterface, Stringable
      * Get name of local socket, or null if not connected.
      * @return string|null
      */
-    public function getName(): string|null
+    public function getName(): ?string
     {
         return $this->isConnected() ? $this->connection->getName() : null;
     }
@@ -460,7 +450,7 @@ class Client implements LoggerAwareInterface, Stringable
      * Get name of remote socket, or null if not connected.
      * @return string|null
      */
-    public function getRemoteName(): string|null
+    public function getRemoteName(): ?string
     {
         return $this->isConnected() ? $this->connection->getRemoteName() : null;
     }
@@ -479,7 +469,7 @@ class Client implements LoggerAwareInterface, Stringable
      * Get Response for handshake procedure.
      * @return Response|null Handshake.
      */
-    public function getHandshakeResponse(): Response|null
+    public function getHandshakeResponse(): ?Response
     {
         return $this->connection ? $this->connection->getHandshakeResponse() : null;
     }

@@ -8,18 +8,15 @@
 namespace WebSocket;
 
 use InvalidArgumentException;
-use Phrity\Net\{
-    SocketServer,
-    StreamCollection,
-    StreamFactory,
-    Uri
-};
+use Phrity\Net\SocketServer;
+use Phrity\Net\StreamCollection;
+use Phrity\Net\StreamFactory;
+use Phrity\Net\Uri;
 use Psr\Log\{
     LoggerAwareInterface,
     LoggerInterface,
     NullLogger
 };
-use Stringable;
 use Throwable;
 use WebSocket\Exception\{
     CloseException,
@@ -35,7 +32,7 @@ use WebSocket\Http\{
 };
 use WebSocket\Message\Message;
 use WebSocket\Middleware\MiddlewareInterface;
-use WebSocket\Trait\{
+use WebSocket\TraitNs\{
     ListenerTrait,
     SendMethodsTrait,
     StringableTrait
@@ -45,7 +42,7 @@ use WebSocket\Trait\{
  * WebSocket\Server class.
  * Entry class for WebSocket server.
  */
-class Server implements LoggerAwareInterface, Stringable
+class Server implements LoggerAwareInterface
 {
     use ListenerTrait;
     use SendMethodsTrait;
@@ -63,12 +60,12 @@ class Server implements LoggerAwareInterface, Stringable
 
     // Internal resources
     private StreamFactory $streamFactory;
-    private SocketServer|null $server = null;
-    private StreamCollection|null $streams = null;
+    private ?SocketServer $server = null;
+    private ?StreamCollection $streams = null;
     private bool $running = false;
     private array $connections = [];
     private array $middlewares = [];
-    private int|null $maxConnections = null;
+    private ?int $maxConnections = null;
 
 
     /* ---------- Magic methods ------------------------------------------------------------------------------------ */
@@ -275,7 +272,7 @@ class Server implements LoggerAwareInterface, Stringable
      * @param int|null $maxConnections
      * @return self
      */
-    public function setMaxConnections(int|null $maxConnections): self
+    public function setMaxConnections(?int $maxConnections): self
     {
         if ($maxConnections !== null && $maxConnections < 1) {
             throw new InvalidArgumentException("Invalid maxConnections '{$maxConnections}' provided");

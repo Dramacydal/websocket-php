@@ -9,15 +9,14 @@ namespace WebSocket\Message;
 
 use DateTimeImmutable;
 use DateTimeInterface;
-use Stringable;
 use WebSocket\Frame\Frame;
-use WebSocket\Trait\StringableTrait;
+use WebSocket\TraitNs\StringableTrait;
 
 /**
  * WebSocket\Message\Message class.
  * Abstract superclass for WebSocket messages.
  */
-abstract class Message implements Stringable
+abstract class Message
 {
     use StringableTrait;
 

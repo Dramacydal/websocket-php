@@ -12,16 +12,15 @@ use Psr\Log\{
     LoggerInterface,
     NullLogger
 };
-use Stringable;
 use WebSocket\Exception\BadOpcodeException;
 use WebSocket\Frame\FrameHandler;
-use WebSocket\Trait\StringableTrait;
+use WebSocket\TraitNs\StringableTrait;
 
 /**
  * WebSocket\Message\MessageHandler class.
  * Message/Frame handling.
  */
-class MessageHandler implements LoggerAwareInterface, Stringable
+class MessageHandler implements LoggerAwareInterface
 {
     use StringableTrait;
 
@@ -29,7 +28,7 @@ class MessageHandler implements LoggerAwareInterface, Stringable
 
     private FrameHandler $frameHandler;
     private LoggerInterface $logger;
-    private array|null $readBuffer = null;
+    private ?array $readBuffer = null;
 
     public function __construct(FrameHandler $frameHandler)
     {

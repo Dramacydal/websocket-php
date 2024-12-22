@@ -13,14 +13,13 @@ use Psr\Http\Message\{
     MessageInterface,
     StreamInterface
 };
-use Stringable;
-use WebSocket\Trait\StringableTrait;
+use WebSocket\TraitNs\StringableTrait;
 
 /**
  * Phrity\WebSocket\Http\Message class.
  * Only used for handshake procedure.
  */
-abstract class Message implements MessageInterface, Stringable
+abstract class Message implements MessageInterface
 {
     use StringableTrait;
 

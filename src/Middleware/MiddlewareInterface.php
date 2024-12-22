@@ -7,12 +7,10 @@
 
 namespace WebSocket\Middleware;
 
-use Stringable;
-
 /**
  * WebSocket\Middleware\MiddlewareInterface interface.
  * Interface for middleware implementations.
  */
-interface MiddlewareInterface extends Stringable
+interface MiddlewareInterface
 {
 }

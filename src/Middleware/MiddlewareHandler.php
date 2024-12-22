@@ -13,7 +13,6 @@ use Psr\Log\{
     LoggerAwareInterface,
     NullLogger
 };
-use Stringable;
 use WebSocket\Connection;
 use WebSocket\Http\{
     HttpHandler,
@@ -23,13 +22,13 @@ use WebSocket\Message\{
     Message,
     MessageHandler
 };
-use WebSocket\Trait\StringableTrait;
+use WebSocket\TraitNs\StringableTrait;
 
 /**
  * WebSocket\Middleware\MiddlewareHandler class.
  * Middleware handling.
  */
-class MiddlewareHandler implements LoggerAwareInterface, Stringable
+class MiddlewareHandler implements LoggerAwareInterface
 {
     use StringableTrait;
 
