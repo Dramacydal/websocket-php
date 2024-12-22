@@ -50,10 +50,6 @@ while (true) {
             ;
 
         // If debug mode and logger is available
-        if (isset($options['debug']) && class_exists('WebSocket\Test\EchoLog')) {
-            $client->setLogger(new \WebSocket\Test\EchoLog());
-            echo "# Using logger\n";
-        }
         if (isset($options['timeout'])) {
             $client->setTimeout($options['timeout']);
             echo "# Set timeout: {$options['timeout']}\n";

@@ -59,25 +59,6 @@ make install
 make update
 ```
 
-## Code standard
-
-This project uses [PSR-1](https://www.php-fig.org/psr/psr-1/) and [PSR-12](https://www.php-fig.org/psr/psr-12/) code standards.
-```
-# Check code standard adherence
-make cs-check
-```
-
-## Unit testing
-
-Unit tests with [PHPUnit](https://phpunit.readthedocs.io/), coverage with [Coveralls](https://github.com/php-coveralls/php-coveralls)
-```
-# Run unit tests
-make test
-
-# Create coverage
-make coverage
-```
-
 ## Contributors
 
 * Sören Jensen (maintainer)

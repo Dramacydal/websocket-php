@@ -5,26 +5,11 @@ update: composer.phar
 	./composer.phar self-update
 	./composer.phar update
 
-test: composer.lock
-	./vendor/bin/phpunit
-
-cs-check: composer.lock
-	./vendor/bin/phpcs --standard=PSR1,PSR12 --encoding=UTF-8 --report=full --colors src tests examples
-
-coverage: composer.lock build
-	XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
-	./vendor/bin/php-coveralls -v
-
-coverage-summary: composer.lock build
-	XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-text
-
 composer.phar:
 	curl -s http://getcomposer.org/installer | php
 
 composer.lock: composer.phar
 	./composer.phar --no-interaction install
-
-vendor/bin/phpunit: install
 
 build:
 	mkdir build
