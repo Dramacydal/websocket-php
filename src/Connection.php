@@ -238,7 +238,7 @@ class Connection implements LoggerAwareInterface
      * @param string $key Meta key
      * @param mixed $value Meta value
      */
-    public function setMeta(string $key, mixed $value): void
+    public function setMeta(string $key, $value): void
     {
         $this->meta[$key] = $value;
     }
@@ -248,7 +248,7 @@ class Connection implements LoggerAwareInterface
      * @param string $key Meta key
      * @return mixed Meta value
      */
-    public function getMeta(string $key): mixed
+    public function getMeta(string $key)
     {
         return $this->meta[$key] ?? null;
     }

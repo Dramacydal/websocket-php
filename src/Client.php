@@ -64,7 +64,7 @@ class Client implements LoggerAwareInterface
     /**
      * @param Psr\Http\Message\UriInterface|string $uri A ws/wss-URI
      */
-    public function __construct(?UriInterface $uri)
+    public function __construct($uri)
     {
         $this->socketUri = $this->parseUri($uri);
         $this->logger = new NullLogger();
@@ -363,12 +363,21 @@ class Client implements LoggerAwareInterface
         $this->disconnect();
         $this->streams = $this->streamFactory->createStreamCollection();
 
+        switch ($this->socketUri->getScheme()) {
+            case 'ws':
+            case 'http':
+                $scheme = 'tcp';
+                break;
+            case 'wss':
+            case 'https':
+                $scheme = 'ssl';
+                break;
+            default:
+                throw new ClientException("Invalid socket scheme: {$this->socketUri->getScheme()}");
+        }
+
         $host_uri = (new Uri())
-            ->withScheme(match ($this->socketUri->getScheme()) {
-                'ws', 'http' => 'tcp',
-                'wss', 'https' => 'ssl',
-                default => throw new ClientException("Invalid socket scheme: {$this->socketUri->getScheme()}")
-            })
+            ->withScheme($scheme)
             ->withHost($this->socketUri->getHost(Uri::IDN_ENCODE))
             ->withPort($this->socketUri->getPort(Uri::REQUIRE_PORT));
 
@@ -460,7 +469,7 @@ class Client implements LoggerAwareInterface
      * @param string $key Meta key
      * @return mixed Meta value
      */
-    public function getMeta(string $key): mixed
+    public function getMeta(string $key)
     {
         return $this->isConnected() ? $this->connection->getMeta($key) : null;
     }
@@ -559,7 +568,7 @@ class Client implements LoggerAwareInterface
      * @return Uri
      * @throws BadUriException On invalid URI
      */
-    protected function parseUri(UriInterface|string $uri): Uri
+    protected function parseUri($uri): Uri
     {
         if ($uri instanceof Uri) {
             $uri_instance = $uri;

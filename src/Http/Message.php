@@ -93,7 +93,7 @@ abstract class Message implements MessageInterface
      * @return static
      * @throws \InvalidArgumentException for invalid header names or values.
      */
-    public function withHeader(string $name, mixed $value): self
+    public function withHeader(string $name, $value): self
     {
         $new = clone $this;
         if ($this->hasHeader($name)) {
@@ -111,7 +111,7 @@ abstract class Message implements MessageInterface
      * @throws \InvalidArgumentException for invalid header names.
      * @throws \InvalidArgumentException for invalid header values.
      */
-    public function withAddedHeader(string $name, mixed $value): self
+    public function withAddedHeader(string $name, $value): self
     {
         $new = clone $this;
         $new->handleHeader($name, $value);
@@ -159,7 +159,7 @@ abstract class Message implements MessageInterface
         return $lines;
     }
 
-    private function handleHeader(string $name, mixed $value): void
+    private function handleHeader(string $name, $value): void
     {
         if (!preg_match('|^[0-9a-zA-Z#_-]+$|', $name)) {
             throw new InvalidArgumentException("'{$name}' is not a valid header field name.");

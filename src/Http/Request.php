@@ -47,7 +47,7 @@ class Request extends Message implements RequestInterface
      * @param mixed $requestTarget
      * @return static
      */
-    public function withRequestTarget(mixed $requestTarget): self
+    public function withRequestTarget($requestTarget): self
     {
         $new = clone $this;
         $new->target = $requestTarget;
